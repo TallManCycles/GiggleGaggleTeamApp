@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GiggleGaggleApp.MasterPage">
+	<ContentPage.Content>
+	<StackLayout>
+		<StackLayout Padding="0,20,0,20" HeightRequest="300" VerticalOptions="CenterAndExpand">
+			<Label Text="Upcoming Event" FontSize="Large" XAlign="Center" HorizontalOptions="CenterAndExpand"/>
+			<Label Text="Riverloop" FontSize="Medium" XAlign="Center" HorizontalOptions="CenterAndExpand"/>
+			<Label x:Name="DateLabel" FontSize="Medium" XAlign="Center" HorizontalOptions="CenterAndExpand"/>
+		</StackLayout>
+		<ScrollView>
+		<StackLayout Padding="20,0,20,0">
+			<ListView x:Name="MainList">
+			<ListView.ItemTemplate>
+		      <DataTemplate>
+		      	<ViewCell>
+		      		<Label Text="{Binding MenuTitle}" FontSize="Large"/>
+		      	</ViewCell>
+		      </DataTemplate>
+		    </ListView.ItemTemplate>				
+			</ListView>
+		</StackLayout>
+		</ScrollView>
+	</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
