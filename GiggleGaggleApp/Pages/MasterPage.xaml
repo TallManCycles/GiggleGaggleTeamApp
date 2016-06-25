@@ -2,18 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GiggleGaggleApp.MasterPage">
 	<ContentPage.Content>
 	<StackLayout>
-		<StackLayout Padding="0,20,0,20" HeightRequest="300" VerticalOptions="CenterAndExpand">
-			<Label Text="Upcoming Event" FontSize="Large" XAlign="Center" HorizontalOptions="CenterAndExpand"/>
-			<Label Text="Riverloop" FontSize="Medium" XAlign="Center" HorizontalOptions="CenterAndExpand"/>
-			<Label x:Name="DateLabel" FontSize="Medium" XAlign="Center" HorizontalOptions="CenterAndExpand"/>
+	<RelativeLayout HeightRequest="230">
+			<StackLayout 
+					RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=0}"
+					RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0}">
+				<Image Source="backgroundTest.jpeg" Aspect="AspectFill" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+				Opacity="0.3"/>
+			</StackLayout>
+
+			<StackLayout Padding="0" 
+						VerticalOptions="CenterAndExpand" Spacing="5" 
+						RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
+																									Property=Width,
+																									Factor=0.27}"
+						RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
+																									Property=Height,
+																									Factor=0.33}">
+			<Label Text="Upcoming Events" TextColor="Black" FontSize="Large" XAlign="Center" HorizontalOptions="CenterAndExpand"/>
+			<Label Text="Riverloop" TextColor="Black" FontSize="Medium" XAlign="Center" HorizontalOptions="CenterAndExpand"/>
+			<Label x:Name="DateLabel" FontSize="Medium" TextColor="Black" XAlign="Center" HorizontalOptions="CenterAndExpand"/>
 		</StackLayout>
+		</RelativeLayout>
 		<ScrollView>
-		<StackLayout Padding="20,0,20,0">
-			<ListView x:Name="MainList">
+		<StackLayout Padding="10,20,10,0">
+			<ListView x:Name="MainList" ItemTapped="OnItemTapped">
 			<ListView.ItemTemplate>
 		      <DataTemplate>
 		      	<ViewCell>
-		      		<Label Text="{Binding MenuTitle}" FontSize="Large"/>
+					<StackLayout Orientation="Horizontal" Spacing="10">
+						<Image Source="{Binding IconImage}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+						<Label Text="{Binding MenuTitle}" XAlign="Center" FontSize="Large" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+					</StackLayout>
 		      	</ViewCell>
 		      </DataTemplate>
 		    </ListView.ItemTemplate>				

@@ -8,9 +8,12 @@ namespace GiggleGaggleApp
 	{
 		public App ()
 		{
-			// The root page of your application
-			MainPage = new GiggleGaggleApp.MasterPage();
+			MainPage = new NavigationPage( new GiggleGaggleApp.MasterPage());
 		}
+
+		//public event Action ShouldTakePicture = () => { };
+
+		//public static App Instance;
 
 		protected override void OnStart ()
 		{

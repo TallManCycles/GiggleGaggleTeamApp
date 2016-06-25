@@ -11,25 +11,48 @@ namespace GiggleGaggleApp
 		{
 			InitializeComponent ();
 
-			DateLabel.Text = DateTime.Now.ToString("d");
+			NavigationPage.SetHasNavigationBar(this, false);
+
+			DateLabel.Text = DateTime.Now.ToString();
 		}
 
 		protected override void OnAppearing()
 		{
-			List<MenuItems> menu = new List<MenuItems> ();
+			MainList.ItemsSource = GetMenuItems();
+		}
 
-			MenuItems m = new MenuItems ();
-			m.MenuTitle = "Bikesquat Camera";
+		private async void OnItemTapped(object sender, ItemTappedEventArgs e)
+		{
+			var item = e.Item as MenuItem;
+			if (item != null)
+			{
+				await Navigation.PushAsync(item.TargetPage);
+			}
+		}
 
-			menu.Add (m);
+		public static List<MenuItem> GetMenuItems()
+		{
+			List<MenuItem> menu = new List<MenuItem>();
 
-			MainList.ItemsSource = menu;
+			MenuItem m1 = new MenuItem();
+			m1.MenuTitle = "Bikesquat Camera";
+			m1.TargetPage = new BikeSquatCameraPage();
+			m1.IconImage = new FileImageSource() { File = "camera.png" };
+			menu.Add (m1);
+
+			MenuItem m2 = new MenuItem();
+			m2.MenuTitle = "Upcoming Events";
+			m2.TargetPage = new Events();
+			m2.IconImage = new FileImageSource() { File = "eventicon.png" };
+			menu.Add(m2);
+
+			return menu;
 		}
 	}
 
-	public class MenuItems
+	public class MenuItem
 	{
-		public MenuItems()
+		public MenuItem()
 		{
 			
 		}
@@ -38,7 +61,13 @@ namespace GiggleGaggleApp
 			get;
 			set;
 		}
-		public Type MenuType {
+		public ContentPage TargetPage {
+			get;
+			set;
+		}
+
+		public ImageSource IconImage
+		{
 			get;
 			set;
 		}
