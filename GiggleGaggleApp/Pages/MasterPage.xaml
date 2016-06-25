@@ -1,37 +1,46 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GiggleGaggleApp.MasterPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GiggleGaggleApp.MasterPage">
 	<ContentPage.Content>
 	<StackLayout>
-	<RelativeLayout HeightRequest="230">
+	<RelativeLayout HeightRequest="250">
 			<StackLayout 
 					RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=X, Factor=0}"
 					RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Y, Factor=0}">
-				<Image Source="backgroundTest.jpeg" Aspect="AspectFill" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+				<Image Source="backgroundTest.jpeg" Aspect="AspectFit" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
 				Opacity="0.3"/>
 			</StackLayout>
 
-			<StackLayout Padding="0" 
-						VerticalOptions="CenterAndExpand" Spacing="5" 
-						RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, 
+			<StackLayout x:Name="DisplayEvent" Padding="0,20,0,0"
+						VerticalOptions="CenterAndExpand"
+						HorizontalOptions="FillAndExpand" Spacing="5" 
+						RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, 
 																									Property=Width,
-																									Factor=0.27}"
-						RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, 
+																									Factor=1}"
+						RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, 
 																									Property=Height,
-																									Factor=0.33}">
-			<Label Text="Upcoming Events" TextColor="Black" FontSize="Large" XAlign="Center" HorizontalOptions="CenterAndExpand"/>
-			<Label Text="Riverloop" TextColor="Black" FontSize="Medium" XAlign="Center" HorizontalOptions="CenterAndExpand"/>
-			<Label x:Name="DateLabel" FontSize="Medium" TextColor="Black" XAlign="Center" HorizontalOptions="CenterAndExpand"/>
+																									Factor=1}">
+			<Label Text="Upcoming Events" TextColor="Black" FontSize="Large" XAlign="Center" 
+						VerticalOptions="CenterAndExpand"/>
+			<Label Text="{Binding Title}" TextColor="Black" FontSize="Medium" XAlign="Center" 
+						VerticalOptions="CenterAndExpand"/>
+			<Label Text="{Binding Date, StringFormat='{0:dddd dd/MM}'}" FontSize="Medium" TextColor="Black" XAlign="Center" 
+						VerticalOptions="CenterAndExpand"/>
+			<Label Text="{Binding forecast.Main}" FontSize="Medium" TextColor="Black" XAlign="Center" 
+						VerticalOptions="CenterAndExpand"/>
+			<Label Text="{Binding forecast.Degrees, StringFormat='{0} Degrees C'}" FontSize="Medium" TextColor="Black" XAlign="Center" 
+						VerticalOptions="CenterAndExpand"/>
 		</StackLayout>
 		</RelativeLayout>
 		<ScrollView>
-		<StackLayout Padding="10,20,10,0">
-			<ListView x:Name="MainList" ItemTapped="OnItemTapped">
+		<StackLayout Padding="10,0,10,0">
+			<ListView x:Name="MainList" ItemTapped="OnItemTapped" BackgroundColor="Transparent">
 			<ListView.ItemTemplate>
 		      <DataTemplate>
 		      	<ViewCell>
 					<StackLayout Orientation="Horizontal" Spacing="10">
 						<Image Source="{Binding IconImage}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
-						<Label Text="{Binding MenuTitle}" XAlign="Center" FontSize="Large" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+						<Label Text="{Binding MenuTitle}" XAlign="Center" FontSize="Large" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
 					</StackLayout>
 		      	</ViewCell>
 		      </DataTemplate>

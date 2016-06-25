@@ -42,9 +42,20 @@
     <Compile Include="Pages\BikeSquatCameraPage.xaml.cs">
       <DependentUpon>BikeSquatCameraPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IOC\IOC.cs" />
     <Compile Include="Services\WeatherService.cs" />
     <Compile Include="Model\Forecast.cs" />
+    <Compile Include="Services\Interface\ICammeraService.cs" />
+    <Compile Include="Model\CameraResult.cs" />
+    <Compile Include="Model\EventPhoto.cs" />
+    <Compile Include="Pages\SuggestedRoutesPage.xaml.cs">
+      <DependentUpon>SuggestedRoutesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WeeklyRidePage.xaml.cs">
+      <DependentUpon>WeeklyRidePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EventPageDetail.xaml.cs">
+      <DependentUpon>EventPageDetail.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.3.5.6335\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.3.5.6335\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
@@ -68,8 +79,8 @@
   <ItemGroup>
     <Folder Include="Pages\" />
     <Folder Include="Model\" />
-    <Folder Include="IOC\" />
     <Folder Include="Services\" />
+    <Folder Include="Services\Interface\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\MasterPage.xaml">
@@ -79,6 +90,15 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\BikeSquatCameraPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\SuggestedRoutesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\WeeklyRidePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\EventPageDetail.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

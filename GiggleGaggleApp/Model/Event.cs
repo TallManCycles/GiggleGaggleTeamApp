@@ -21,6 +21,12 @@ namespace GiggleGaggleApp
 			get;
 			set;
 		}
+
+		public Forecast forecast
+		{
+			get;
+			set;
+		}
 	}
 }
 

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="GiggleGaggleApp.EventPageDetail">
+	<ContentPage.Content>
+		<StackLayout x:Name="DetailLayout" Spacing="20" Padding="10,20,10,0">
+			<Entry Text="{Binding Title}" Placeholder="Event Name" Keyboard="Text"/>
+			<Entry Text="{Binding Description}" Placeholder="Event Description" Keyboard="Text"/>
+			<DatePicker x:Name="EventDate" Date="{Binding Date}" Format="D" />
+			<Button Text="Save" Clicked="OnSave"/>
+			<Button Text="Cancel" Clicked="OnCancel"/>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

@@ -8,57 +8,19 @@ namespace GiggleGaggleApp
 			//api.openweathermap.org / data / 2.5 / forecast / daily ? q = Brisbane & cnt = 1 & APIKEY = 4eda855eff41a8daf3dcd10e14c93a82
 		}
 
-		public City city
+		public string Main
 		{
 			get;
 			set;
 		}
 
-
-	}
-
-	public class City
-	{
-		public int id
+		public string Description
 		{
 			get;
 			set;
 		}
 
-		public string name
-		{
-			get;
-			set;
-		}
-
-		public Coordinations coord
-		{
-			get;
-			set;
-		}
-
-		public string country
-		{
-			get;
-			set;
-		}
-
-		public int population
-		{
-			get;
-			set;
-		}
-	}
-
-	public class Coordinations
-	{
-		public decimal lon
-		{
-			get;
-			set;
-		}
-
-		public decimal lat
+		public int Degrees
 		{
 			get;
 			set;

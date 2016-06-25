@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
 using Xamarin.Forms;
 
 namespace GiggleGaggleApp
@@ -13,7 +13,9 @@ namespace GiggleGaggleApp
 
 			NavigationPage.SetHasNavigationBar(this, false);
 
-			DateLabel.Text = DateTime.Now.ToString();
+			//DateLabel.Text = DateTime.Now.ToString();
+
+			DisplayEvent.BindingContext = Events.GetDummyList().FirstOrDefault();
 		}
 
 		protected override void OnAppearing()
@@ -28,23 +30,39 @@ namespace GiggleGaggleApp
 			{
 				await Navigation.PushAsync(item.TargetPage);
 			}
+
+			MainList.SelectedItem = null;
 		}
 
 		public static List<MenuItem> GetMenuItems()
 		{
 			List<MenuItem> menu = new List<MenuItem>();
 
-			MenuItem m1 = new MenuItem();
-			m1.MenuTitle = "Bikesquat Camera";
-			m1.TargetPage = new BikeSquatCameraPage();
-			m1.IconImage = new FileImageSource() { File = "camera.png" };
-			menu.Add (m1);
+			MenuItem weekly = new MenuItem();
+			weekly.MenuTitle = "Weekly Ride";
+			weekly.TargetPage = new WeeklyRidePage();
+			//weekly.IconImage = 
+			menu.Add(weekly);
 
-			MenuItem m2 = new MenuItem();
-			m2.MenuTitle = "Upcoming Events";
-			m2.TargetPage = new Events();
-			m2.IconImage = new FileImageSource() { File = "eventicon.png" };
-			menu.Add(m2);
+			MenuItem routes = new MenuItem();
+			routes.MenuTitle = "Suggested Routes";
+			routes.TargetPage = new SuggestedRoutesPage();
+			//routes.IconImage = new FileImageSource() { File = "eventicon.png" };
+			menu.Add(routes);
+
+			MenuItem events = new MenuItem();
+			events.MenuTitle = "Upcoming Events";
+			events.TargetPage = new Events();
+			events.IconImage = new FileImageSource() { File = "eventicon.png" };
+			menu.Add(events);
+
+			MenuItem cammera = new MenuItem();
+			cammera.MenuTitle = "Bikesquats";
+			cammera.TargetPage = new BikeSquatCameraPage(DependencyService.Get<ICammeraService>());
+			cammera.IconImage = new FileImageSource() { File = "camera.png" };
+			menu.Add (cammera);
+
+
 
 			return menu;
 		}

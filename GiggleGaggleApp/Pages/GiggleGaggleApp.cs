@@ -6,14 +6,11 @@ namespace GiggleGaggleApp
 {
 	public class App : Application
 	{
-		public App ()
+		public App()
 		{
-			MainPage = new NavigationPage( new GiggleGaggleApp.MasterPage());
+			MainPage = new NavigationPage(new GiggleGaggleApp.MasterPage());
 		}
 
-		//public event Action ShouldTakePicture = () => { };
-
-		//public static App Instance;
 
 		protected override void OnStart ()
 		{

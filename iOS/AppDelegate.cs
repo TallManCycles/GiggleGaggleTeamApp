@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 using Foundation;
@@ -14,7 +15,7 @@ namespace GiggleGaggleApp.iOS
 		{
 			global::Xamarin.Forms.Forms.Init ();
 
-			LoadApplication (new App ());
+			LoadApplication(new App());
 
 			return base.FinishedLaunching (app, options);
 		}
