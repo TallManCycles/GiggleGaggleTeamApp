@@ -11,10 +11,10 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="2" translatesAutoresizingMaskIntoConstraints="NO" image="FinalSplash.png">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="2" translatesAutoresizingMaskIntoConstraints="NO" image="Startup.jpg">
                     <rect key="frame" x="160" y="112" width="160" height="240"/>
-                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                        <rect key="frame" x="160" y="112" width="160" height="240"/>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <rect key="frame" x="10" y="10" width="460" height="460"/>
                     </variation>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2016 Aaron Day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
@@ -37,10 +37,12 @@
                     <exclude reference="8ie-xW-0ye"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="21"/>
-                    <exclude reference="22"/>
                     <exclude reference="23"/>
                     <exclude reference="24"/>
+                    <exclude reference="31"/>
+                    <exclude reference="32"/>
+                    <exclude reference="35"/>
+                    <exclude reference="36"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -49,17 +51,29 @@
                     <include reference="8ie-xW-0ye"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="21"/>
-                    <include reference="22"/>
                     <include reference="23"/>
                     <include reference="24"/>
+                    <include reference="31"/>
+                    <include reference="32"/>
+                    <include reference="35"/>
+                    <include reference="36"/>
                 </mask>
             </variation>
             <constraints>
-                <constraint id="21" firstItem="2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX"/>
-                <constraint id="22" firstItem="iN0-l3-epB" firstAttribute="centerY" secondItem="2" secondAttribute="centerY" constant="8"/>
                 <constraint id="23" firstItem="iN0-l3-epB" firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20"/>
                 <constraint id="24" firstItem="8ie-xW-0ye" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX"/>
+                <constraint id="31" firstItem="iN0-l3-epB" firstAttribute="trailing" secondItem="2" secondAttribute="trailing" constant="160">
+                    <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                </constraint>
+                <constraint id="32" firstItem="2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="160">
+                    <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                </constraint>
+                <constraint id="35" firstItem="2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="112">
+                    <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                </constraint>
+                <constraint id="36" firstItem="iN0-l3-epB" firstAttribute="bottom" secondItem="2" secondAttribute="bottom" constant="128">
+                    <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                </constraint>
             </constraints>
         </view>
     </objects>
@@ -67,6 +81,11 @@
         <image name="backgroundTest.jpeg" width="640" height="425"/>
         <image name="camera.png" width="500" height="500"/>
         <image name="eventicon.png" width="500" height="402"/>
+        <image name="KangarooP.JPG" width="640" height="640"/>
+        <image name="Nudgee.jpg" width="640" height="480"/>
+        <image name="Nudgee2.JPG" width="640" height="480"/>
+        <image name="Nudgee3.jpg" width="640" height="480"/>
+        <image name="Startup.jpg" width="750" height="1334"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedScreenMetrics key="destination" type="retina47"/>

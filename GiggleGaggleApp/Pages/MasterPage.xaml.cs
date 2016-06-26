@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace GiggleGaggleApp
 {
-	public partial class MasterPage : ContentPage
+	public partial class MasterPage : BaseContentPage
 	{
 		public MasterPage ()
 		{
@@ -16,10 +16,7 @@ namespace GiggleGaggleApp
 			//DateLabel.Text = DateTime.Now.ToString();
 
 			DisplayEvent.BindingContext = Events.GetDummyList().FirstOrDefault();
-		}
 
-		protected override void OnAppearing()
-		{
 			MainList.ItemsSource = GetMenuItems();
 		}
 
@@ -53,13 +50,13 @@ namespace GiggleGaggleApp
 			MenuItem events = new MenuItem();
 			events.MenuTitle = "Upcoming Events";
 			events.TargetPage = new Events();
-			events.IconImage = new FileImageSource() { File = "eventicon.png" };
+			//events.IconImage = new FileImageSource() { File = "eventicon.png" };
 			menu.Add(events);
 
 			MenuItem cammera = new MenuItem();
 			cammera.MenuTitle = "Bikesquats";
 			cammera.TargetPage = new BikeSquatCameraPage(DependencyService.Get<ICammeraService>());
-			cammera.IconImage = new FileImageSource() { File = "camera.png" };
+			//cammera.IconImage = new FileImageSource() { File = "camera.png" };
 			menu.Add (cammera);
 
 

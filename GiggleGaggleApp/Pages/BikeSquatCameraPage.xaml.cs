@@ -13,6 +13,8 @@ namespace GiggleGaggleApp
 		{
 			_cameraService = cammeraService;
 
+			InitializeComponent();
+
 			Title = "Bike Squats";
 
 			ToolbarItems.Add(new ToolbarItem
@@ -22,7 +24,7 @@ namespace GiggleGaggleApp
 				Command = new Command(() => Button_Clicked(null, null))
 			});
 
-			InitializeComponent();
+			MainList.BindingContext = DummyImages();
 		}
 
 		public async void Button_Clicked(Object sender, EventArgs e)
@@ -32,14 +34,36 @@ namespace GiggleGaggleApp
 			if (pictureResult != null)
 			{
 				EventPhoto photo = new EventPhoto();
-				photo.image = new Image();
-				photo.image.Source = pictureResult.Image;
+				photo.ImageSource = pictureResult.Image;
 				photo.DateTaken = DateTime.Now;
 
-				PhotoGrid.BindingContext = photo;
+				MainList.BindingContext = photo;
 
 				OnPropertyChanged();
 			}
+		}
+
+		public void OnItemTapped(Object sender, EventArgs e)
+		{
+			
+		}
+
+		public IEnumerable<EventPhoto> DummyImages()
+		{
+			List<EventPhoto> images = new List<EventPhoto>();
+
+			EventPhoto p = new EventPhoto();
+			p.ImageSource = "Nudgee.jpg";
+			p.DateTaken = DateTime.Now;
+			p.Title = "Demo";
+
+			images.Add(p);
+
+				//new Image() { Source = "Nudgee.jpg" },
+				//new Image() { Source = "Nudgee2.JPG" },
+				//new Image() { Source = "Nudgee3.jpg" },
+
+			return images;
 		}
 	}
 }

@@ -5,7 +5,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>Giggle Gaggle</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.swiftposmemberportal.giggle-gaggle</string>
+	<string>giggle-gaggle</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -39,6 +39,11 @@
 	</array>
 	<key>CFBundleName</key>
 	<string>Giggle Gaggle</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>XSAppIconAssets</key>
 	<string>Resources/Images.xcassets/AppIcons.appiconset</string>
 </dict>

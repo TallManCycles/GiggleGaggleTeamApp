@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+<BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GiggleGaggleApp.MasterPage">
-	<ContentPage.Content>
+	<BaseContentPage.Content>
 	<StackLayout>
 	<RelativeLayout HeightRequest="250">
 			<StackLayout 
@@ -10,26 +10,25 @@
 				<Image Source="backgroundTest.jpeg" Aspect="AspectFit" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
 				Opacity="0.3"/>
 			</StackLayout>
-
-			<StackLayout x:Name="DisplayEvent" Padding="0,20,0,0"
+			<StackLayout x:Name="DisplayEvent" Padding="0,40,0,0"
 						VerticalOptions="CenterAndExpand"
-						HorizontalOptions="FillAndExpand" Spacing="5" 
+						HorizontalOptions="FillAndExpand" Spacing="10" 
 						RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, 
 																									Property=Width,
 																									Factor=1}"
 						RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, 
 																									Property=Height,
 																									Factor=1}">
-			<Label Text="Upcoming Events" TextColor="Black" FontSize="Large" XAlign="Center" 
-						VerticalOptions="CenterAndExpand"/>
+			<Label Text="Next Group Ride" TextColor="Black" FontSize="Large" XAlign="Center" 
+						VerticalOptions="Center"/>
 			<Label Text="{Binding Title}" TextColor="Black" FontSize="Medium" XAlign="Center" 
-						VerticalOptions="CenterAndExpand"/>
-			<Label Text="{Binding Date, StringFormat='{0:dddd dd/MM}'}" FontSize="Medium" TextColor="Black" XAlign="Center" 
-						VerticalOptions="CenterAndExpand"/>
-			<Label Text="{Binding forecast.Main}" FontSize="Medium" TextColor="Black" XAlign="Center" 
-						VerticalOptions="CenterAndExpand"/>
-			<Label Text="{Binding forecast.Degrees, StringFormat='{0} Degrees C'}" FontSize="Medium" TextColor="Black" XAlign="Center" 
-						VerticalOptions="CenterAndExpand"/>
+						VerticalOptions="Center"/>
+			<Label Text="{Binding Date, StringFormat='{0:dddd, d MMMM}'}" FontSize="Medium" TextColor="Black" XAlign="Center" 
+						VerticalOptions="Center"/>
+			<Label Text="{Binding forecast.Main, StringFormat='Forecast: {0}'}" FontSize="Medium" TextColor="Black" XAlign="Center" 
+						VerticalOptions="Center"/>
+			<Label Text="{Binding forecast.Degrees, StringFormat='Temperature: {0}°'}" FontSize="Medium" TextColor="Black" XAlign="Center" 
+						VerticalOptions="Center"/>
 		</StackLayout>
 		</RelativeLayout>
 		<ScrollView>
@@ -40,7 +39,7 @@
 		      	<ViewCell>
 					<StackLayout Orientation="Horizontal" Spacing="10">
 						<Image Source="{Binding IconImage}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
-						<Label Text="{Binding MenuTitle}" XAlign="Center" FontSize="Large" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+						<Label Text="{Binding MenuTitle}" FontSize="Large" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
 					</StackLayout>
 		      	</ViewCell>
 		      </DataTemplate>
@@ -49,5 +48,5 @@
 		</StackLayout>
 		</ScrollView>
 	</StackLayout>
-	</ContentPage.Content>
-</ContentPage>
+	</BaseContentPage.Content>
+</BaseContentPage>

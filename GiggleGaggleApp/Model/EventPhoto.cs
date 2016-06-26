@@ -9,7 +9,7 @@ namespace GiggleGaggleApp
 		{
 		}
 
-		public Image image
+		public ImageSource ImageSource
 		{
 			get;
 			set;
