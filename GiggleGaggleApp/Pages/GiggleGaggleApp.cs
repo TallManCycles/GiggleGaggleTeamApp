@@ -47,10 +47,8 @@ namespace GiggleGaggleApp
 
 		public static Page GetMainPage()
 		{
-			var profilePage = new MasterPage();
-
-			_NavPage = new NavigationPage(profilePage);
-
+			_NavPage = new NavigationPage(new MasterPage());
+			_NavPage.Navigation.PushModalAsync(new MasterPage());
 			return _NavPage;
 		}
 
@@ -83,7 +81,7 @@ namespace GiggleGaggleApp
 			{
 				return new Action(() =>
 			   {
-				   _NavPage.Navigation.PopAsync();
+				   _NavPage.Navigation.PopModalAsync();
 			   });
 			}
 		}

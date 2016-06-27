@@ -26,6 +26,7 @@
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchFastDev>true</MtouchFastDev>
+    <IOSDebugOverWiFi>true</IOSDebugOverWiFi>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -95,6 +96,9 @@
     <Reference Include="Xamarin.Social.iOS">
       <HintPath>..\Components\xamarin.social-1.1.7\lib\ios-unified\Xamarin.Social.iOS.dll</HintPath>
     </Reference>
+    <Reference Include="Facebook">
+      <HintPath>..\packages\Xamarin.Facebook.iOS.4.12.0\lib\Xamarin.iOS10\Facebook.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GiggleGaggleApp\GiggleGaggleApp.csproj">
@@ -147,6 +151,10 @@
   <ItemGroup>
     <XamarinComponentReference Include="xamarin.social">
       <Version>1.1.7</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="facebookios">
+      <Version>4.12.0.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
