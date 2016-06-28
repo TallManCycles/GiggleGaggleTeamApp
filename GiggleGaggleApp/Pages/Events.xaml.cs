@@ -44,6 +44,11 @@ namespace GiggleGaggleApp
 					Title = string.Format("Riverloop {0}", i),
 					Description = "This is a bike squat event",
 					Date = DateTime.Now.AddDays(i),
+					RideType = Event.rideType.Casual,
+					Elevation = Event.elevation.Flat,
+					MeetingLocation = "Jeays Street Bowen Hills",
+					OrganiserName = "Aaron",
+					Time = DateTime.Now.AddDays(i),
 					forecast = new Forecast()
 					{
 						Main = "Rain",

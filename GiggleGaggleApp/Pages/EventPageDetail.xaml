@@ -4,9 +4,12 @@
 		x:Class="GiggleGaggleApp.EventPageDetail">
 	<ContentPage.Content>
 		<StackLayout x:Name="DetailLayout" Spacing="20" Padding="10,20,10,0">
-			<Entry Text="{Binding Title}" Placeholder="Event Name" Keyboard="Text"/>
-			<Entry Text="{Binding Description}" Placeholder="Event Description" Keyboard="Text"/>
-			<DatePicker x:Name="EventDate" Date="{Binding Date}" Format="D" />
+			<DatePicker x:Name="EventDate" Date="{Binding Date, Format='{0: ddd/MM}'}" FontSize="Medium"/>
+			<TimePicker Time="{Binding Time}" />
+			<Label Text="{Binding MeetingLocation, StringFormat='Meet Up Spot {0}'}" />
+			<Picker x:Name="RideTypePicker"/>
+			<Picker x:Name="ElevationPicker"/>
+			<Label Text="{Binding Description}" />
 			<Button Text="Save" Clicked="OnSave"/>
 			<Button Text="Cancel" Clicked="OnCancel"/>
 		</StackLayout>

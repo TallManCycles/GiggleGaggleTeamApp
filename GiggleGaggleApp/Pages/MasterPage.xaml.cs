@@ -59,6 +59,12 @@ namespace GiggleGaggleApp
 			//cammera.IconImage = new FileImageSource() { File = "camera.png" };
 			menu.Add (cammera);
 
+			MenuItem userDetails = new MenuItem();
+			userDetails.MenuTitle = "User Details";
+			userDetails.TargetPage = new UserDetails();
+			//cammera.IconImage = new FileImageSource() { File = "camera.png" };
+			menu.Add(userDetails);
+
 
 
 			return menu;

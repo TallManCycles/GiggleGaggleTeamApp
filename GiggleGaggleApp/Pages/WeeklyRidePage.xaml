@@ -1,5 +1,21 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GiggleGaggleApp.WeeklyRidePage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="GiggleGaggleApp.WeeklyRidePage"
+		Title="{Binding Title}">
+	
 	<ContentPage.Content>
+		<Frame>
+		<StackLayout x:Name="MainLayout" Spacing="10">
+			<Label Text="{Binding Date, StringFormat='{0:dddd hh:mm tt}'}" FontSize="Medium"/>
+			<Label Text="{Binding MeetingLocation, StringFormat='Meet Up Spot {0}'}" />
+			<Label Text="{Binding Time, StringFormat='{0: hh:mm tt}'}" />
+			<Picker x:Name="RideTypePicker"/>
+			<Picker x:Name="ElevationPicker"/>
+			<Label Text="{Binding Description}" />
+			<Label Text="{Binding OrganiserName}"/>
+			<Label Text="{Binding forecast}"/>
+		</StackLayout>
+		</Frame>
 	</ContentPage.Content>
 </ContentPage>

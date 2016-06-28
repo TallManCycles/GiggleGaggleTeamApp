@@ -31,11 +31,18 @@ namespace GiggleGaggleApp.iOS
 					return;
 
 				//nameLabel.Text = e.NewProfile.Name;
+
+				User u = new User();
+
+				u.Name = e.NewProfile.FirstName;
+				u.ImageUrl = e.NewProfile.ImageUrl(ProfilePictureMode.Square, new CGSize(70,70)).ToString();
+
+				App.SaveUser(u);
 			});
 
 			loginButton = new LoginButton(new CGRect(80, 20, 220, 46))
 			{
-				LoginBehavior = LoginBehavior.SystemAccount,
+				LoginBehavior = LoginBehavior.Native,
 				ReadPermissions = readPermissions.ToArray()
 			};
 

@@ -8,9 +8,20 @@ namespace GiggleGaggleApp
 	{
 		static NavigationPage _NavPage;
 
+		//public App()
+		//{
+		//	MainPage = GetMainPage();
+		//}
+
 		public App()
 		{
-			MainPage = GetMainPage();
+			var loginPage = new LoginPage();
+			MainPage = loginPage;
+		}
+
+		public void HandleLoginSucceeded()
+		{
+			MainPage = new NavigationPage(new MasterPage());
 		}
 
 		static volatile App _Instance;
@@ -44,14 +55,6 @@ namespace GiggleGaggleApp
 
 		public OAuthSettings OAuthSettings { get; private set; }
 
-
-		public static Page GetMainPage()
-		{
-			_NavPage = new NavigationPage(new MasterPage());
-			_NavPage.Navigation.PushModalAsync(new MasterPage());
-			return _NavPage;
-		}
-
 		public static bool IsLoggedIn
 		{
 			get
@@ -61,6 +64,12 @@ namespace GiggleGaggleApp
 		}
 
 		static string _Token;
+
+		public static User User
+		{
+			get;
+			set;
+		}
 
 		public static string Token
 		{
@@ -75,14 +84,17 @@ namespace GiggleGaggleApp
 			_Token = token;
 		}
 
+		public static void SaveUser(User user)
+		{
+			User = user;
+		}
+
 		public static Action SuccessfulLoginAction
 		{
 			get
 			{
-				return new Action(() =>
-			   {
-				   _NavPage.Navigation.PopModalAsync();
-			   });
+				var a = (App)App.Current;
+				return new Action(a.HandleLoginSucceeded);
 			}
 		}
 
