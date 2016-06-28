@@ -12,7 +12,7 @@ namespace GiggleGaggleApp
 
 			if (!App.IsLoggedIn)
 			{
-				Navigation.PushModalAsync(new LoginPage());
+				Navigation.PushAsync(new LoginPage());
 			}
 		}
 	}
