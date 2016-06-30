@@ -11,12 +11,14 @@ using Xamarin.Auth;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
-[assembly: ExportRenderer(typeof(LoginPage), typeof(LoginPageRenderer))]
+[assembly: ExportRenderer(typeof(FacebookLoginPage), typeof(LoginPageRenderer))]
 namespace GiggleGaggleApp.iOS
 {
 	public class LoginPageRenderer : PageRenderer
 	{
 		LoginButton loginButton;
+		UILabel nameLabel;
+		ProfilePictureView pictureView;
 
 		public override void ViewDidAppear(bool animated)
 		{
@@ -30,7 +32,8 @@ namespace GiggleGaggleApp.iOS
 				if (e.NewProfile == null)
 					return;
 
-				//nameLabel.Text = e.NewProfile.Name;
+				nameLabel.Text = e.NewProfile.Name;
+				pictureView.PictureMode = ProfilePictureMode.Square;
 
 				User u = new User();
 
@@ -45,6 +48,10 @@ namespace GiggleGaggleApp.iOS
 				LoginBehavior = LoginBehavior.Native,
 				ReadPermissions = readPermissions.ToArray()
 			};
+
+			nameLabel = new UILabel();
+
+			pictureView = new ProfilePictureView(new CGRect(80, 90, 220, 46));
 
 			loginButton.TouchUpInside += (sender, e) =>
 			{
@@ -69,6 +76,8 @@ namespace GiggleGaggleApp.iOS
 					new UIAlertView("Login", "The user cancelled the login", null, "Ok", null).Show();
 					return;
 				}
+
+
 
 
 			};
@@ -103,31 +112,8 @@ namespace GiggleGaggleApp.iOS
 
 			// Add views to main view
 			View.AddSubview(loginButton);
-			//View.AddSubview(pictureView);
-			//View.AddSubview(nameLabel);
-
-			//var auth = new OAuth2Authenticator(
-			//	clientId: App.Instance.OAuthSettings.ClientId,
-			//	scope: App.Instance.OAuthSettings.Scope,
-			//	authorizeUrl: new Uri(App.Instance.OAuthSettings.AuthorizeUrl),
-			//	redirectUrl: new Uri(App.Instance.OAuthSettings.RedirectUrl));
-
-			//auth.Completed += (sender, eventArgs) =>
-			//{
-			//	// We presented the UI, so it's up to us to dimiss it on iOS.
-			//	App.SuccessfulLoginAction.Invoke();
-
-			//	if (eventArgs.IsAuthenticated)
-			//	{
-			//		// Use eventArgs.Account to do wonderful things
-			//		App.SaveToken(eventArgs.Account.Properties["access_token"]);
-			//	}
-			//	else {
-			//		// The user cancelled
-			//	}
-			//};
-
-			//PresentViewController(this, true, null);
+			View.AddSubview(pictureView);
+			View.AddSubview(nameLabel);
 		}
 	}
 }

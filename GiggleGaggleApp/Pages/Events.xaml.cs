@@ -51,7 +51,7 @@ namespace GiggleGaggleApp
 					Time = DateTime.Now.AddDays(i),
 					forecast = new Forecast()
 					{
-						Main = "Rain",
+						message = "Rain",
 						Description = "Light Rain",
 						Degrees = 16
 					},

@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GiggleGaggleApp.LoginPage">
 	<ContentPage.Content>
-		<!--<ScrollView>
+		<ScrollView>
 		<StackLayout Padding="10,0,10,0">
 			<Image Source="icon.png"/>
 			<Label Text="User Email" FontSize="Medium" />
-			<Entry Placeholder="Email Address" Keyboard="Text"/>
+			<Entry x:Name="username" Placeholder="Email Address" Keyboard="Text"/>
 			<Label Text="Password" FontSize="Medium" />
-			<Entry Placeholder="Password" Keyboard="Text"/>
+			<Entry x:Name="password" Placeholder="Password" Keyboard="Text" IsPassword="true"/>
 			<Button Text="Login" Clicked="Login" FontSize="Large"/>
 			<Label Text="Not a user yet?"/>
 			<Button Text="Register" Clicked="Register" FontSize="Large"/>
 			</StackLayout>
-		</ScrollView>-->
+		</ScrollView>
 	</ContentPage.Content>
 </ContentPage>

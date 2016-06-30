@@ -4,24 +4,19 @@ using Xamarin.Forms;
 
 namespace GiggleGaggleApp
 {
-	public class App : Application
+	public class App : Application, ILoginManager
 	{
-		static NavigationPage _NavPage;
-
-		//public App()
-		//{
-		//	MainPage = GetMainPage();
-		//}
+		public static App _Current;
 
 		public App()
 		{
-			var loginPage = new LoginPage();
-			MainPage = loginPage;
-		}
+			SettingsService.IsLoggedIn = true;
 
-		public void HandleLoginSucceeded()
-		{
-			MainPage = new NavigationPage(new MasterPage());
+			// we remember if they're logged in, and only display the login page if they're not
+			if (SettingsService.IsLoggedIn)
+				MainPage = new NavigationPage(new MasterPage(this));
+			else
+				MainPage = new LoginModalPage(this);
 		}
 
 		static volatile App _Instance;
@@ -55,14 +50,6 @@ namespace GiggleGaggleApp
 
 		public OAuthSettings OAuthSettings { get; private set; }
 
-		public static bool IsLoggedIn
-		{
-			get
-			{
-				return !string.IsNullOrEmpty(_Token);
-			}
-		}
-
 		static string _Token;
 
 		public static User User
@@ -94,8 +81,27 @@ namespace GiggleGaggleApp
 			get
 			{
 				var a = (App)App.Current;
-				return new Action(a.HandleLoginSucceeded);
+				var action = new Action(a.ShowMainPage);
+				action.Invoke();
+				return action;
 			}
+		}
+
+		public void ShowMainPage()
+		{
+			MainPage = new NavigationPage(new MasterPage(this));
+			SettingsService.IsLoggedIn = true;
+		}
+
+		public void Logout()
+		{
+			SettingsService.IsLoggedIn = false;
+			MainPage = new LoginModalPage(this);
+		}
+
+		public void ShowFacebookLogin()
+		{
+			MainPage = new NavigationPage(new FacebookLoginPage());
 		}
 
 

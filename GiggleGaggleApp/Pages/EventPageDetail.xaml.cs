@@ -24,9 +24,33 @@ namespace GiggleGaggleApp
 		{
 			DetailLayout.BindingContext = _e;
 
+			List<string> rideTypeList = new List<string>();
+
+			foreach (Event.rideType r in Enum.GetValues(typeof(Event.rideType)))
+			{
+				rideTypeList.Add(r.ToString());
+				RideTypePicker.Items.Add(r.ToString());
+			}
+
+			List<string> elevationType = new List<string>();
+
+			foreach (Event.elevation e in Enum.GetValues(typeof(Event.elevation)))
+			{
+				elevationType.Add(e.ToString());
+				ElevationPicker.Items.Add(e.ToString());
+			}
+
+			ElevationPicker.BindingContext = elevationType;
+
+
 			if (isNew)
 			{
 				EventDate.Date = DateTime.Now.AddDays(1);
+			}
+			else
+			{
+				RideTypePicker.SelectedIndex = rideTypeList.IndexOf(_e.RideType.ToString());
+				ElevationPicker.SelectedIndex = elevationType.IndexOf(_e.Elevation.ToString());
 			}
 
 			base.OnAppearing();

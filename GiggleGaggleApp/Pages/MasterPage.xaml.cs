@@ -5,15 +5,21 @@ using Xamarin.Forms;
 
 namespace GiggleGaggleApp
 {
-	public partial class MasterPage : BaseContentPage
+	public partial class MasterPage : ContentPage
 	{
-		public MasterPage ()
+		ILoginManager _loginManager;
+
+		public MasterPage (ILoginManager loginManager)
 		{
 			InitializeComponent ();
 
+			_loginManager = loginManager;
+
 			NavigationPage.SetHasNavigationBar(this, false);
 
-			//DateLabel.Text = DateTime.Now.ToString();
+			ApiService ws = new ApiService();
+
+			ws.GetForecast();
 
 			DisplayEvent.BindingContext = Events.GetDummyList().FirstOrDefault();
 
@@ -23,15 +29,19 @@ namespace GiggleGaggleApp
 		private async void OnItemTapped(object sender, ItemTappedEventArgs e)
 		{
 			var item = e.Item as MenuItem;
-			if (item != null)
+			if (item != null && item.TargetPage != null)
 			{
 				await Navigation.PushAsync(item.TargetPage);
+			}
+			else
+			{
+				_loginManager.Logout();
 			}
 
 			MainList.SelectedItem = null;
 		}
 
-		public static List<MenuItem> GetMenuItems()
+		public List<MenuItem> GetMenuItems()
 		{
 			List<MenuItem> menu = new List<MenuItem>();
 
@@ -60,8 +70,7 @@ namespace GiggleGaggleApp
 			menu.Add (cammera);
 
 			MenuItem userDetails = new MenuItem();
-			userDetails.MenuTitle = "User Details";
-			userDetails.TargetPage = new UserDetails();
+			userDetails.MenuTitle = "Logout";
 			//cammera.IconImage = new FileImageSource() { File = "camera.png" };
 			menu.Add(userDetails);
 

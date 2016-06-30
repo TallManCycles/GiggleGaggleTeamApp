@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Runtime.Serialization;
+
 namespace GiggleGaggleApp
 {
+	[DataContract]
 	public class Forecast
 	{
 		public Forecast()
@@ -8,7 +11,8 @@ namespace GiggleGaggleApp
 			//api.openweathermap.org / data / 2.5 / forecast / daily ? q = Brisbane & cnt = 1 & APIKEY = 4eda855eff41a8daf3dcd10e14c93a82
 		}
 
-		public string Main
+		[DataMember(Name="message")] 
+		public string message
 		{
 			get;
 			set;
