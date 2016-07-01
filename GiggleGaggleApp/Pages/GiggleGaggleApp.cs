@@ -10,7 +10,7 @@ namespace GiggleGaggleApp
 
 		public App()
 		{
-			SettingsService.IsLoggedIn = true;
+			//SettingsService.IsLoggedIn = true;
 
 			// we remember if they're logged in, and only display the login page if they're not
 			if (SettingsService.IsLoggedIn)

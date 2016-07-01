@@ -19,7 +19,7 @@ namespace GiggleGaggleApp
 
 			ApiService ws = new ApiService();
 
-			ws.GetForecast();
+			//ws.GetForecast();
 
 			DisplayEvent.BindingContext = Events.GetDummyList().FirstOrDefault();
 
