@@ -9,9 +9,9 @@ namespace GiggleGaggleApp
 	{
 		ICammeraService _cameraService;
 
-		public BikeSquatCameraPage(ICammeraService cammeraService)
+		public BikeSquatCameraPage(ICammeraService cameraService)
 		{
-			_cameraService = cammeraService;
+			_cameraService = cameraService;
 
 			InitializeComponent();
 

@@ -25,9 +25,9 @@
 						VerticalOptions="Center"/>
 			<Label Text="{Binding Date, StringFormat='{0:dddd, d MMMM}'}" FontSize="Medium" TextColor="Black" XAlign="Center" 
 						VerticalOptions="Center"/>
-			<Label Text="{Binding forecast.Main, StringFormat='Forecast: {0}'}" FontSize="Medium" TextColor="Black" XAlign="Center" 
+			<Label Text="{Binding WeatherDescription, StringFormat='Forecast: {0}'}" FontSize="Medium" TextColor="Black" XAlign="Center" 
 						VerticalOptions="Center"/>
-			<Label Text="{Binding forecast.Degrees, StringFormat='Temperature: {0}°'}" FontSize="Medium" TextColor="Black" XAlign="Center" 
+			<Label Text="{Binding Temperature, StringFormat='Temperature: {0}°'}" FontSize="Medium" TextColor="Black" XAlign="Center" 
 						VerticalOptions="Center"/>
 		</StackLayout>
 		</RelativeLayout>

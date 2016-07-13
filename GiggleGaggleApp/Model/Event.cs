@@ -1,4 +1,5 @@
 ﻿using System;
+using Xamarin.Forms;
 
 namespace GiggleGaggleApp
 {
@@ -28,7 +29,13 @@ namespace GiggleGaggleApp
 			set;
 		}
 
-		public Forecast forecast
+		public double Temperature
+		{
+			get;
+			set;
+		}
+
+		public string WeatherDescription
 		{
 			get;
 			set;
@@ -72,6 +79,12 @@ namespace GiggleGaggleApp
 			Hilly,
 			Mountain
 		};
+
+		public EventPhoto Image
+		{
+			get;
+			set;
+		}
 
 
 	}

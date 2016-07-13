@@ -7,7 +7,7 @@ namespace GiggleGaggleApp
 {
 	public partial class Events : ContentPage
 	{
-		public Events()
+		public Events(EventType type)
 		{
 			InitializeComponent();
 
@@ -15,7 +15,7 @@ namespace GiggleGaggleApp
 			{
 				Text = "Add",
 				Order = ToolbarItemOrder.Primary,
-				Command = new Command(() => Navigation.PushAsync(new EventPageDetail(null)))
+				Command = new Command(() => Navigation.PushAsync(new EventDetailEdit(null)))
 			});
 
 			MainList.ItemsSource = GetDummyList();
@@ -26,7 +26,7 @@ namespace GiggleGaggleApp
 			var eventSelected = e.Item as Event;
 			if (eventSelected != null)
 			{
-				Navigation.PushAsync(new EventPageDetail(eventSelected));
+				Navigation.PushAsync(new EventDetailEdit(eventSelected));
 			}
 
 			MainList.SelectedItem = null;
@@ -49,18 +49,20 @@ namespace GiggleGaggleApp
 					MeetingLocation = "Jeays Street Bowen Hills",
 					OrganiserName = "Aaron",
 					Time = DateTime.Now.AddDays(i),
-					forecast = new Forecast()
-					{
-						message = "Rain",
-						Description = "Light Rain",
-						Degrees = 16
-					},
+					Temperature = 16.0,
+					WeatherDescription = "Light Rain"
 				};
 
 				events.Add(e);
 			}
 
 			return events;
+		}
+
+		public enum EventType
+		{
+			Past,
+			Future
 		}
 	}
 }

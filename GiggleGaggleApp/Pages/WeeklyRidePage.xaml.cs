@@ -53,7 +53,7 @@ namespace GiggleGaggleApp
 
 		public async void Button_Clicked(Object sender, EventArgs e)
 		{
-			await this.Navigation.PushAsync(new EventPageDetail(_event));
+			await this.Navigation.PushAsync(new EventDetailEdit(_event));
 		}
 	}
 }

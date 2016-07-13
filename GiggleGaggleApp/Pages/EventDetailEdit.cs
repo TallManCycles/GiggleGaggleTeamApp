@@ -5,12 +5,12 @@ using Xamarin.Forms;
 
 namespace GiggleGaggleApp
 {
-	public partial class EventPageDetail : ContentPage
+	public partial class EventDetailEdit : ContentPage
 	{
 		Event _e;
 		bool isNew;
 
-		public EventPageDetail(Event e)
+		public EventDetailEdit(Event e)
 		{
 			InitializeComponent();
 
@@ -18,11 +18,23 @@ namespace GiggleGaggleApp
 				_e = e;
 			else
 				isNew = true;
+				_e = new Event();
 		}
 
 		protected override void OnAppearing()
 		{
 			DetailLayout.BindingContext = _e;
+
+			if (_e.Image == null)
+			{
+				BikesquatButton.IsVisible = true;
+				BikeSquatImage.Source = ImageSource.FromFile("KangarooP.JPG");
+			}
+			else
+			{
+				BikesquatButton.IsVisible = false;
+				BikeSquatImage.Source = _e.Image.ImageSource;
+			}
 
 			List<string> rideTypeList = new List<string>();
 
@@ -60,14 +72,51 @@ namespace GiggleGaggleApp
 		{
 			var result = await DisplayAlert("Confirmation", "Are you sure you want to save this event?", "Yes", "No");
 
-			//do something with result;
+			if (result)
+			{
+				await Navigation.PopAsync();
+			}
 		}
 
 		private async void OnCancel(Object sender, EventArgs e)
 		{
 			var result = await DisplayAlert("Confirmation", "Are you sure you want to cancel?", "Yes", "No");
 
-			await Navigation.PopAsync();
+			if (result)
+				await Navigation.PopAsync();
+		}
+
+		private async void TakePicture(Object sender, EventArgs e)
+		{
+			var pictureResult = await DependencyService.Get<ICammeraService>().TakePictureAsync();
+
+			EventPhoto image = _e.Image;
+
+			if (pictureResult != null)
+			{
+				if (image == null)
+				{
+					image = new EventPhoto();
+					image.DateTaken = DateTime.Now;
+					image.ImageSource = pictureResult.Image;
+					image.Title = _e.Title;
+					_e.Image = image;
+				}
+				else
+				{
+					var result = await DisplayAlert("Image Override", "Would you like to overwrite the current event image?", "Yes", "No");
+
+					if (result)
+					{
+						image.DateTaken = DateTime.Now;
+						image.ImageSource = pictureResult.Image;
+						image.Title = _e.Title;
+						_e.Image = image;
+					}
+				}
+
+				OnPropertyChanged();
+			}
 		}
 	}
 }

@@ -19,6 +19,47 @@ namespace GiggleGaggleApp
 				MainPage = new LoginModalPage(this);
 		}
 
+		public void ShowMainPage()
+		{
+			MainPage = new NavigationPage(new MasterPage(this));
+			SettingsService.IsLoggedIn = true;
+		}
+
+		public void Logout()
+		{
+			SettingsService.IsLoggedIn = false;
+			MainPage = new LoginModalPage(this);
+		}
+
+		public void ShowFacebookLogin()
+		{
+			MainPage = new NavigationPage(new FacebookLoginPage());
+		}
+
+		public static Size ScreenSize
+		{
+			get;
+			set;
+		}
+
+		public static double Scale { get; set; }
+
+
+		protected override void OnStart ()
+		{
+			// Handle when your app starts
+		}
+
+		protected override void OnSleep ()
+		{
+			// Handle when your app sleeps
+		}
+
+		protected override void OnResume ()
+		{
+			// Handle when your app resumes
+		}
+
 		static volatile App _Instance;
 
 		static object _SyncRoot = new Object();
@@ -85,39 +126,6 @@ namespace GiggleGaggleApp
 				action.Invoke();
 				return action;
 			}
-		}
-
-		public void ShowMainPage()
-		{
-			MainPage = new NavigationPage(new MasterPage(this));
-			SettingsService.IsLoggedIn = true;
-		}
-
-		public void Logout()
-		{
-			SettingsService.IsLoggedIn = false;
-			MainPage = new LoginModalPage(this);
-		}
-
-		public void ShowFacebookLogin()
-		{
-			MainPage = new NavigationPage(new FacebookLoginPage());
-		}
-
-
-		protected override void OnStart ()
-		{
-			// Handle when your app starts
-		}
-
-		protected override void OnSleep ()
-		{
-			// Handle when your app sleeps
-		}
-
-		protected override void OnResume ()
-		{
-			// Handle when your app resumes
 		}
 	}
 }

@@ -7,7 +7,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-using GiggleGaggleApp.Droid.Services;
+using HockeyApp.Android;
 
 namespace GiggleGaggleApp.Droid
 {
@@ -19,6 +19,15 @@ namespace GiggleGaggleApp.Droid
 			base.OnCreate (bundle);
 
 			global::Xamarin.Forms.Forms.Init (this, bundle);
+
+			CrashManager.Register(this, "e4a1f908bf294318a617d37642aec6d4");
+
+			var size = new Xamarin.Forms.Size();
+			var metrics = Resources.DisplayMetrics;
+			size.Height = metrics.HeightPixels;
+			size.Width = metrics.WidthPixels;
+
+			App.Scale = metrics.Density;
 
 			LoadApplication (new App ());
 		}

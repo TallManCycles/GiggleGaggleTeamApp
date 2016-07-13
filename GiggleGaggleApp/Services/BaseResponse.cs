@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace GiggleGaggleApp
 {
-	public class BaseResponse : HttpResponseMessage
+	public class BaseResponse
 	{
-		public HttpResponseMessage response;
-
 		public List<string> Errors;
 
 		public BaseResponse()
