@@ -3,21 +3,24 @@
 	<ContentPage.Content>
 		<ScrollView>
 		<StackLayout x:Name="DetailLayout" Spacing="5" Padding="5,10,5,0" BackgroundColor="Silver">
-			<StackLayout>
-				<Image x:Name="BikeSquatImage"/>
-			</StackLayout>
-			
 			<Frame BackgroundColor="White" HasShadow="false" HorizontalOptions="FillAndExpand">
-				<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-					<Label Text="{Binding Title}" FontSize="Large" XAlign="Center" TextColor="Black" />
-					<Label x:Name="EventDate" Text="{Binding Date, StringFormat='{0: dddd dd/mm}'}" HorizontalOptions="Start"/>
-					<Label Text="{Binding Time, StringFormat='{0: hh:mm}'}" HorizontalOptions="End"/>
+				<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+					<Image Source="upcomingevents.png" />
+					<StackLayout Orientation="Vertical">
+						<Label Text="{Binding Title}" FontSize="Large" XAlign="Center" TextColor="Black" />
+						<Label x:Name="EventDate" Text="{Binding Date, StringFormat='{0: dddd dd/mm}'}" HorizontalOptions="Start"/>
+					</StackLayout>
+<!--					<Label Text="{Binding Time, StringFormat='{0: hh:mm}'}" HorizontalOptions="End"/>-->
 				</StackLayout>
 			</Frame>
 
-			<Frame BackgroundColor="White" HasShadow="false">
+			<Frame BackgroundColor="White" HasShadow="true">
 				<StackLayout Spacing = "5">
-					<Label Text="Meet Up Spot" HorizontalOptions="Center"/>
+					<StackLayout Orientation="Horizontal">
+						<Image Source="location.png" Aspect="AspectFit"/>
+						<Label Text="Meet Up Spot" HorizontalOptions="Center"/>
+					</StackLayout>
+
 					<Label Text="{Binding MeetupLocation}"/>
 					<Label Text="Type Of Ride" HorizontalOptions="Center"/>
 					<Label x:Name="RideTypeLabel"/>
@@ -28,6 +31,10 @@
 					<Button x:Name="BikesquatButton" Text="Add A Bikesquat" Clicked="TakePicture" FontSize="Large"/>
 				</StackLayout>
 			</Frame>
+
+			<StackLayout>
+				<Image x:Name="BikeSquatImage"/>
+			</StackLayout>
 		</StackLayout>
 		</ScrollView>
 	</ContentPage.Content>

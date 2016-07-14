@@ -99,13 +99,13 @@ namespace GiggleGaggleApp
 			MenuItem upcomingEvents = new MenuItem();
 			upcomingEvents.MenuTitle = "Upcoming Events";
 			upcomingEvents.TargetPage = new Events(Events.EventType.Future);
-			//events.IconImage = new FileImageSource() { File = "eventicon.png" };
+			upcomingEvents.IconImage = new FileImageSource() { File = "upcomingevents.png" };
 			menu.Add(upcomingEvents);
 
 			MenuItem pastEvents = new MenuItem();
 			pastEvents.MenuTitle = "Past Events";
 			pastEvents.TargetPage = new Events(Events.EventType.Past);
-			//events.IconImage = new FileImageSource() { File = "eventicon.png" };
+			pastEvents.IconImage = new FileImageSource() { File = "pastevents.png" };
 			menu.Add(pastEvents);
 
 			//MenuItem cammera = new MenuItem();
@@ -115,6 +115,7 @@ namespace GiggleGaggleApp
 
 			MenuItem userDetails = new MenuItem();
 			userDetails.MenuTitle = "Logout";
+			userDetails.IconImage = new FileImageSource() { File = "logout.png" };
 			menu.Add(userDetails);
 
 			return menu;

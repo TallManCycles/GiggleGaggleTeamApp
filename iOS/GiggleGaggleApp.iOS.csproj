@@ -155,14 +155,16 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\backgroundTest.jpeg" />
-    <BundleResource Include="Resources\camera.png" />
-    <BundleResource Include="Resources\eventicon.png" />
     <BundleResource Include="Resources\KangarooP.JPG" />
-    <BundleResource Include="Resources\Nudgee.jpg" />
-    <BundleResource Include="Resources\Nudgee2.JPG" />
-    <BundleResource Include="Resources\Nudgee3.jpg" />
     <BundleResource Include="Resources\Startup.jpg" />
     <BundleResource Include="Resources\icon.png" />
+    <BundleResource Include="Resources\info.png" />
+    <BundleResource Include="Resources\user.png" />
+    <BundleResource Include="Resources\location.png" />
+    <BundleResource Include="Resources\time.png" />
+    <BundleResource Include="Resources\logout.png" />
+    <BundleResource Include="Resources\pastevents.png" />
+    <BundleResource Include="Resources\upcomingevents.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
