@@ -29,6 +29,8 @@ namespace GiggleGaggleApp.Droid
 
 			App.Scale = metrics.Density;
 
+			Xamarin.FormsMaps.Init(this, bundle);
+
 			LoadApplication (new App ());
 		}
 

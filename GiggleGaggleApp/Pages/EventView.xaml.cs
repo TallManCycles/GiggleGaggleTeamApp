@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 namespace GiggleGaggleApp
 {
 	public partial class EventView : ContentPage
 	{
 		Event _e;
+		Geocoder geoCoder;
 
 		public EventView(Event e)
 		{
 			_e = e;
+			geoCoder = new Geocoder();
 
 			InitializeComponent();
 
@@ -23,9 +26,31 @@ namespace GiggleGaggleApp
 			});
 		}
 
-		protected override void OnAppearing()
+		protected override async void OnAppearing()
 		{
 			DetailLayout.BindingContext = _e;
+
+			var address = _e.MeetingLocation;
+			var approximateLocations = await geoCoder.GetPositionsForAddressAsync(address);
+			var position = approximateLocations.FirstOrDefault();
+
+			var pin = new Pin
+			{
+				Type = PinType.Place,
+				Position = position,
+				Label = "Meeting Point",
+				Address = _e.MeetingLocation
+			};
+			MeetupLocationMap.Pins.Add(pin);
+
+			MeetupLocationMap.MoveToRegion(
+			MapSpan.FromCenterAndRadius(
+					position, Distance.FromKilometers(1)));
+
+
+
+			AttendingButton.Text = "I'm Attending";
+
 
 			if (_e.Image == null)
 			{
@@ -89,6 +114,11 @@ namespace GiggleGaggleApp
 
 				OnPropertyChanged();
 			}
+		}
+
+		private async void AttendingClick(object sender, EventArgs e)
+		{
+			await DisplayAlert("confirmation", "You're attending!", "OK");
 		}
 
 		private async void Button_Clicked(object p1, object p2)

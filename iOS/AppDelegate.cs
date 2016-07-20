@@ -34,6 +34,8 @@ namespace GiggleGaggleApp.iOS
 
 			App.Scale = UIScreen.MainScreen.Scale;
 
+			Xamarin.FormsMaps.Init();
+
 			return base.FinishedLaunching(app, options);
 		}
 

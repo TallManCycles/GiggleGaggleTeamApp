@@ -1,33 +1,67 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GiggleGaggleApp.EventView">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+		xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+		x:Class="GiggleGaggleApp.EventView">
 	<ContentPage.Content>
 		<ScrollView>
 		<StackLayout x:Name="DetailLayout" Spacing="5" Padding="5,10,5,0" BackgroundColor="Silver">
+
+			<maps:Map WidthRequest="320" HeightRequest="200"
+            x:Name="MeetupLocationMap"
+            IsShowingUser="true"
+            MapType="Hybrid"
+        	/>
+				
 			<Frame BackgroundColor="White" HasShadow="false" HorizontalOptions="FillAndExpand">
-				<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-					<Image Source="upcomingevents.png" WidthRequest="30"/>
-					<StackLayout Orientation="Vertical">
+				<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+					<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+						<Image Source="multiuser.png" Aspect="AspectFit" WidthRequest="30" />
 						<Label Text="{Binding Title}" FontSize="Large" XAlign="Center" TextColor="Black" />
-						<Label x:Name="EventDate" Text="{Binding Date, StringFormat='{0: dddd dd/mm}'}" HorizontalOptions="Start"/>
 					</StackLayout>
-<!--					<Label Text="{Binding Time, StringFormat='{0: hh:mm}'}" HorizontalOptions="End"/>-->
+					<Button x:Name="AttendingButton" Clicked="AttendingClick" />
+					<ListView x:Name="AttendingList" HeightRequest="150">
+						<ListView.ItemTemplate>
+							<DataTemplate>
+								<TextCell Text="{Binding Name}"/>
+							</DataTemplate>
+						</ListView.ItemTemplate>
+					</ListView>
 				</StackLayout>
 			</Frame>
 
 			<Frame BackgroundColor="White" HasShadow="true">
-				<StackLayout Spacing = "5">
+				<StackLayout Spacing = "10">
 					<StackLayout Orientation="Horizontal">
-						<Image Source="location.png" Aspect="AspectFit" WidthRequest="30"/>
-						<Label Text="Meet Up Spot" HorizontalOptions="Center"/>
+						<Image Source="location.png" Aspect="AspectFit" WidthRequest="20"/>
+						<Label Text="{Binding MeetupLocation}"/>
 					</StackLayout>
 
-					<Label Text="{Binding MeetupLocation}"/>
-					<Label Text="Type Of Ride" HorizontalOptions="Center"/>
-					<Label x:Name="RideTypeLabel"/>
-					<Label Text="Amount Of Elevation" HorizontalOptions="Center"/>
-					<Label x:Name="ElevationTypeLabel"/>
-					<Label Text="Description" HorizontalOptions="Center"/>
-					<Label Text="{Binding Description}" HorizontalOptions="CenterAndExpand"/>
+					<StackLayout Orientation="Horizontal">
+						<Image Source="upcomingevents.png" Aspect="AspectFit" WidthRequest="20"/>
+						<Label x:Name="EventDate" Text="{Binding Date, StringFormat='{0: dddd dd/mm}'}" HorizontalOptions="Start"/>
+					</StackLayout>
+
+					<StackLayout Orientation="Horizontal">
+						<Image Source="time.png" Aspect="AspectFit" WidthRequest="20"/>
+						<Label Text="{Binding Time, StringFormat='{0: hh:mm}'}" HorizontalOptions="End"/>
+					</StackLayout>
+
+					<StackLayout Orientation="Horizontal">
+						<Image Source="ridetype.png" Aspect="AspectFit" WidthRequest="20"/>
+						<Label Text="{Binding RideType}" HorizontalOptions="End"/>
+					</StackLayout>
+
+					<StackLayout Orientation="Horizontal">
+						<Image Source="elevation.png" Aspect="AspectFit" WidthRequest="20"/>
+						<Label Text="{Binding Elevation}" HorizontalOptions="End"/>
+					</StackLayout>
+
+					<StackLayout Orientation="Horizontal">
+						<Image Source="info.png" Aspect="AspectFit" WidthRequest="20"/>
+						<Label Text="{Binding Description}" HorizontalOptions="End"/>
+					</StackLayout>
+						
 					<Button x:Name="BikesquatButton" Text="Add A Bikesquat" Clicked="TakePicture" FontSize="Large"/>
 				</StackLayout>
 			</Frame>

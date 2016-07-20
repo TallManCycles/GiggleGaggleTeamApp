@@ -46,7 +46,7 @@ namespace GiggleGaggleApp
 					Date = DateTime.Now.AddDays(i),
 					RideType = Event.rideType.Casual,
 					Elevation = Event.elevation.Flat,
-					MeetingLocation = "Jeays Street Bowen Hills",
+					MeetingLocation = "8 Jeays Street Bowen Hills",
 					OrganiserName = "Aaron",
 					Time = DateTime.Now.AddDays(i),
 					Temperature = 16.0,
